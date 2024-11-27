@@ -1,9 +1,9 @@
 # Hybrid Compression for Power Quality Disturbance Signals
 This repository contains the Python implementation of a hybrid compression method for compound power quality disturbance (PQD) signals, as described in the paper:
 
-**"A Hybrid Compression Method for Compound Power Quality Disturbance Signals in Active Distribution Networks"**  
-*Authors: Xiangui Xiao, Kaicheng Li, and Chen Zhao*  
-Published in: *Journal of Modern Power Systems and Clean Energy, November 2023*
+> "A Hybrid Compression Method for Compound Power Quality Disturbance Signals in Active Distribution Networks"**  
+   *Authors: Xiangui Xiao, Kaicheng Li, and Chen Zhao*  
+   Published in: *Journal of Modern Power Systems and Clean Energy, November 2023*
 
 The code replicates the methodologies from the paper, integrating Huffman coding, run-length encoding, sparse decomposition, wavelet thresholding, and a strong tracking Kalman filter (STKF) to achieve efficient PQD signal compression. It balances compression ratio (CR) and reconstruction accuracy (percentage RMS difference, PRD), demonstrating robustness against noise and varying sampling rates.
 
@@ -19,8 +19,6 @@ The code replicates the methodologies from the paper, integrating Huffman coding
 - **Decompression and Reconstruction**: Fully reversible process for signal reconstruction.
 
 ## Methodology
-
-### Overview
 The hybrid compression method follows these steps:
 1. **Sparse Decomposition**:
    - Splits the PQD signal into transient components (TC) and steady-state components (SSC) using an overcomplete dictionary (`[I, H]`, identity matrix and Hartley transform matrix).
@@ -50,13 +48,11 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Running the Implementation
 The main script is `implementation.py`. To execute:
 ```bash
 python implementation.py
 ```
-
-### Outputs
+It gives the following: 
 1. **Signal Visualization**:
    - Plots the original and reconstructed signals for each PQD type and SNR level.
    - Annotates plots with compression ratio (CR) and PRD metrics.
@@ -67,11 +63,11 @@ python implementation.py
 
 ### Metrics
 For synthetic PQD signals, the results obtained are:
-| Signal Type            | SNR 30      | Compression Ratio (SNR 30) | PRD (SNR 30) | SNR 40      | Compression Ratio (SNR 40) | PRD (SNR 40) | SNR 50      | Compression Ratio (SNR 50) | PRD (SNR 50) |
-|------------------------|-------------|----------------------------|--------------|-------------|----------------------------|--------------|-------------|----------------------------|--------------|
-| Impulse Signals         | SNR 30: 30  | 32.51                      | 1.96%        | SNR 40: 40  | 36.83                      | 0.73%        | SNR 50: 50  | 117.70                     | 0.28%        |
-| Sag Signals             | SNR 30: 30  | 33.46                      | 1.18%        | SNR 40: 40  | 37.37                      | 0.35%        | SNR 50: 50  | 77.58                      | 0.20%        |
-| Decaying Harmonics Signals| SNR 30: 30 | 33.57                      | 5.93%        | SNR 40: 40  | 37.17                      | 5.87%        | SNR 50: 50  | 52.92                      | 5.87%        |
+| Signal Type            | Compression Ratio (SNR 30) | PRD (SNR 30) | Compression Ratio (SNR 40) | PRD (SNR 40)  | Compression Ratio (SNR 50) | PRD (SNR 50) |
+|------------------------|--------------------------|--------------|--------------------------|--------------|--------------------------|--------------|
+| Impulse Signals           | 32.51                     | 1.96%        | 36.83                     | 0.73%        | 117.70                    | 0.28%        |
+| Sag Signals               | 33.46                     | 1.18%        | 37.37                     | 0.35%        | 77.58                     | 0.20%        |
+| Decaying Harmonics Signals | 33.57                     | 5.93%        | 37.17                     | 5.87%        | 52.92                     | 5.87%        |
 
 
 
